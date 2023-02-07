@@ -28,8 +28,8 @@ This is a simplified version of the assignment we give to regular candidates. We
 
 # Notes submitted by the candidate
 
-- Based on the UI sketch, I decided to order the elements in `PlayerItemsList` by the order in which the items were pressed first.
-- I assume that you may only receive one bonus for each letter, but multiple bonuses could be supported with a variable like this: 
+- Based on the UI sketch, I decided to order the elements in `PlayerItemsList` by the order in which the items were pressed first. I could have avoided some complexity and 2 loops by removing `uniqueEligblePlayerItems` and looping over `const key in items` instead of `const key of uniqueEligblePlayerItems`. This solution would order the elements by their key's position in `items`.
+- I assume that you may only receive one bonus for each item, but multiple bonuses could be supported with a variable like this: 
 `const numberOfBonuses = Math.floor(numberOfOccurences / itemDefinition.bonus.count);`.
-- I assume that `playerItems` will not contain uneligble keys, but I added a filter to handle that possibility.
+- I assume that `playerItems` will not contain uneligble keys, but I added a filter to handle that possibility. This also would not be a worry if the alternative solution from the first note was implemented.
 
