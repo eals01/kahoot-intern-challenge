@@ -28,4 +28,8 @@ This is a simplified version of the assignment we give to regular candidates. We
 
 # Notes submitted by the candidate
 
-todo
+- Based on the UI sketch, I decided to order the elements in `PlayerItemsList` by the order in which the items were pressed first.
+- I assume that you may only receive one bonus for each letter, but multiple bonuses could be supported with a variable like this: 
+`const numberOfBonuses = Math.floor(numberOfOccurences / itemDefinition.bonus.count);`.
+- I assume that `playerItems` will not contain uneligble keys, but I added a filter to handle that possibility.
+
