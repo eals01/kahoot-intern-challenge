@@ -13,7 +13,7 @@ export const ItemButton: React.FC<ItemButtonProps> = ({ item, onClick }) => {
   const handleClick = () => onClick(item.id);
 
   return (
-    <Button tabIndex={-1} onClick={handleClick}>
+    <Button onClick={handleClick}>
       <Item item={item} />
     </Button>
   );
