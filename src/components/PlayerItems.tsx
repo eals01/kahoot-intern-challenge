@@ -78,7 +78,29 @@ function calculateRows(items: ItemsDefinition, playerItems: string[]): Rows {
         count: numberOfOccurences,
         score: numberOfOccurences * itemDefinition.value,
         bonus: qualifiesForBonus ? itemDefinition.bonus!.amount : 0
-      }
+      };
+  }
+
+  return rows;
+};
+
+// Alternative solution in O(n) time with less readability
+function calculateRowsAlternative(items: ItemsDefinition, playerItems: string[]): Rows {
+  const rows: Rows = {};
+  const eligblePlayerItems = playerItems.filter((key) => key in items);
+
+  for(const key of eligblePlayerItems) {
+    const itemDefinition = items[key];
+    let row = rows[key] ? rows[key] : {item: itemDefinition, count: 0, score: 0, bonus: 0};
+    const count = row.count + 1;
+    const bonus = itemDefinition.bonus;
+
+    rows[key] = {
+      item: itemDefinition, 
+      count: count, 
+      score: count * itemDefinition.value, 
+      bonus: bonus && count >= bonus.count ? bonus.amount : 0
+    };
   }
 
   return rows;
