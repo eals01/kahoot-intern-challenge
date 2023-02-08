@@ -66,8 +66,11 @@ export const PlayerItems: React.FC<PlayerItemsProps> = ({
 
 function calculateRows(items: ItemsDefinition, playerItems: string[]): Rows {
   const rows: Rows = {};
+  
+  // Decide what unique and eligble items have been collected and order their keys by time collected
   const uniqueEligblePlayerItems = Array.from(new Set(playerItems)).filter((key) => key in items);
 
+  // Go through every item definition that the player has collected and calculate its score
   for(const key of uniqueEligblePlayerItems) {
       const itemDefinition = items[key];
       const numberOfOccurences = playerItems.filter((playerItem) => playerItem === key).length;
@@ -89,8 +92,11 @@ function calculateRowsAlternative(items: ItemsDefinition, playerItems: string[])
   const rows: Rows = {};
   const eligblePlayerItems = playerItems.filter((key) => key in items);
 
+  // Go through every collected item and update their corresponding score
   for(const key of eligblePlayerItems) {
     const itemDefinition = items[key];
+
+    // Add a new row if the item is the first of its kind
     let row = rows[key] ? rows[key] : {item: itemDefinition, count: 0, score: 0, bonus: 0};
     const count = row.count + 1;
     const bonus = itemDefinition.bonus;
